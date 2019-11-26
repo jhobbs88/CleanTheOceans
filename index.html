@@ -1,0 +1,125 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie-edge">
+        <title>Clean The Oceans</title>
+        <link type="text/css" href="css/materialize.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link type="text/css" href="css/styles.css" rel="stylesheet">
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <link rel="manifest" href="manifest.json">
+        <link rel="apple-touch-icon" href="/img/icons/icon-96.png">
+        <meta name="apple-mobile-web-app-status-bar" content="#1d3152">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="Clean The Oceans">
+        <meta name="theme-color" content="#1d3152">
+    </head>
+    <body class="grey lighten-4">
+        <!-- top nav -->
+        <nav class="z-depth-0">
+            <div class="nav-wrapper container">
+                <a href="/">Clean The Oceans</a>
+                <span class="right black-text text-darken-1">
+                    <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
+                </span>
+            </div>
+        </nav>
+        
+        <!-- side nav -->
+        <ul id="side-menu" class="sidenav side-menu">
+            <li><a class="subheader">CLEAN THE OCEANS</a></li>
+            <li><a href="/" class="waves=effect">Home</a></li>
+            <li><a href="/pages/about.html" class="waves=effect">About</a></li>
+            <li><div class="divider"></div></li>
+            <li><a href="/pages/contact.html" class="waves-effect">
+                <i class="material-icons">mail_outline</i>Contact</a>
+            </li>
+        </ul>
+        
+        
+        <!-- ship button -->
+        <div class="center">
+            <p style="margin-top: 15%;">Click to submit report</p>
+            <img id="ship-btn" class="sidenav-trigger" data-target="side-form"src="img/ship.png">
+           
+        </div>
+        <div class="slidecontainer">
+            <p id="density-label" class="grey-text text-darken-1">Pollution Level - Clear</p>
+            <input type="range" min="1" max="100" value="0" class="slider center" id="density-level">
+            <p id="plastics-label"class="grey-text text-darken-1">Plastics Percentage - 0%</p>
+            <input type="range" min="1" max="100" value="0" class="slider center" id="plastics-level">
+        </div>
+
+         
+        <!-- add data -->
+        <div id="side-form" class="container grey-text text-darken-1 sidenav side-form">
+            <form class="location container section">
+                <h6>New Pollution Report</h6>
+                <div class="divider"></div>
+                <div class="input-field">
+                    <input placeholder="19/09/2019" id="date" type="text" class="validate" readonly>
+                    <label for="date">Date</label>
+                </div>
+                <div class="input-field">
+                    <input placeholder="e.g 51.45451" id="lat" minlength="8" maxlength="10" type="text" class="validate">
+                    <label for="title">Latitude</label>
+                </div>
+                <div class="input-field">
+                    <input placeholder="e.g -2.58791" id="long" minlength="8" maxlength="10" type="text" class="validate">
+                    <label for="coords">Longitude</label>
+                </div>
+                <div class="input-field">
+                    <input placeholder="e.g High" id="density" type="text" class="validate" readonly>
+                    <label for="density">Pollution Level</label>
+                </div>
+                <div class="input-field">
+                    <input placeholder="e.g 50%" id="plastics" type="text" class="validate" readonly>
+                    <label for="plastics">Plastics Percentage</label>
+                </div>
+                <div class="input-field center">
+                    <button class="btn-small">Add</button>
+                </div>
+            </form>
+            <!-- realtime messages -->
+            <div class="messages center grey-text text-darken-1">
+            
+            </div>
+        </div>
+       
+
+
+        <button type="button" class="ad2hs-prompt">Add To Home Screen</button>
+        <button type="button" class="ad2hs-prompt-ios">
+            To add this app to the home screen: tap <i class="material-icons">open_in_browser</i> and the <b>Add to Home Screen</b>
+            <p class="dismiss">Click to dismiss this message</p>
+        </button>
+        <!--Required Scripts-->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-analytics.js"></script>
+
+        <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCmJEsK4Mj_wyTHlMR3erc1jbZTz_k95os",
+            authDomain: "clean-the-oceans.firebaseapp.com",
+            databaseURL: "https://clean-the-oceans.firebaseio.com",
+            projectId: "clean-the-oceans",
+            storageBucket: "clean-the-oceans.appspot.com",
+            messagingSenderId: "759637651346",
+            appId: "1:759637651346:web:81a116624dd0c546501b4b",
+            measurementId: "G-BJGLXNQ0DG"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        const db = firebase.firestore();
+        </script>
+        <script src="js/app.js"></script>
+        <script src="js/db.js"></script>
+        <script src="js/ui.js"></script>
+    </body>
+</html>
+    

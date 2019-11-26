@@ -1,0 +1,144 @@
+/* colours */
+:root{
+  --primary: #07a899;
+  --secondary: #027d71;
+  --title: #1d3152;
+}
+
+/* layout styles */
+nav{
+  background: var(--primary);
+  border-bottom: 10px solid var(--secondary);
+}
+nav a{
+  text-transform: uppercase;
+  color: var(--title);
+}
+nav a span{
+  font-weight: bold;
+}
+nav .sidenav-trigger{
+  margin: 0;
+}
+
+#ship-btn{
+  animation: swing 4s infinite ease;
+  transform-origin: bottom center;
+}
+
+@keyframes swing
+{
+  0%{ transform: rotate(-2deg);}
+  50%{ transform: rotate(5deg);}
+  100%{ transform: rotate(-2deg);}
+}
+/* location form styles */
+.location{
+  margin-top: 20%;
+}
+.card-panel.location{
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0px 1px 3px rgba(90,90,90,0.1);
+  display: grid;
+  grid-template-columns: 2fr 6fr 1fr;
+  grid-template-areas: "image details delete";
+  position: relative;
+}
+.location img{
+  grid-area: image;
+  max-width: 120px;
+}
+.location-details{
+  grid-area: details;
+  margin-top: 6px;
+}
+.location-delete{
+  grid-area: delete;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+}
+.location-delete i{
+  font-size: 18px;
+}
+.location-title{
+  font-weight: bold;
+}
+
+/* form-styles */
+.add-btn{
+  background: var(--title) !important;
+}
+input{
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+.side-form button{
+  background: var(--title);
+  box-shadow: 1px 1px 3px rgba(90,90,90,0.2);
+}
+form .input-field{
+  margin-top: 30px;
+}
+
+/* prompt */
+.ad2hs-prompt, .ad2hs-prompt-ios  {
+  background-color: rgb(59, 134, 196); /* Blue */
+  border: none;
+  display: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  position: absolute;
+  margin: 0 1rem 1rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: calc(100% - 32px);
+}
+.dismiss{
+  font-size: 10px;
+  font-style: italic;
+}
+
+/*temp sliders*/
+.slidecontainer {
+  position: fixed;
+  width: 80%;
+  bottom: 50px;
+  left: 10%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 80%;
+  height: 50px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
