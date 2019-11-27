@@ -4,11 +4,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie-edge">
         <title>Clean The Oceans</title>
+        <!--stylesheets-->
         <link type="text/css" href="css/materialize.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link type="text/css" href="css/styles.css" rel="stylesheet">
+        <link type="text/css" href="slider/slider-screen.css" rel="stylesheet">
+        <!--js-->
         <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="slider/snap.svg-min.js"></script>
+	    <script type="text/javascript" src="slider/jquery-1.11.js"></script>
+        <script type="text/javascript" src="slider/jquery-ui.min.js"></script>
+        <!--service worker manifest-->
         <link rel="manifest" href="manifest.json">
+        <!--mobile gubbins-->
         <link rel="apple-touch-icon" href="/img/icons/icon-96.png">
         <meta name="apple-mobile-web-app-status-bar" content="#1d3152">
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -39,7 +47,7 @@
         
         
         <!-- ship button -->
-        <div class="center">
+        <div id="ship-container" class="center">
             <p style="margin-top: 15%;">Click to submit report</p>
             <img id="ship-btn" class="sidenav-trigger" data-target="side-form"src="img/ship.png">
            
@@ -49,6 +57,13 @@
             <input type="range" min="1" max="100" value="0" class="slider center" id="density-level">
             <p id="plastics-label"class="grey-text text-darken-1">Plastics Percentage - 0%</p>
             <input type="range" min="1" max="100" value="0" class="slider center" id="plastics-level">
+        </div>
+
+        <div id="slider-container">
+            <label id="density-label" class="grey-text text-darken-1" for="density">Pollution Level - <span>Clear</span></label>
+            <input id="density" class="slider" type="range" min="0" max="5" step="1" value="0" name="density"><br>
+            <label id="plastics-label" class="grey-text text-darken-1" for="plastics">Plastics Percentage - <span>0%</span></label>
+            <input id="plastics" class="slider" type="range" min="0" max="5" step="1" value="0" name="plastics">
         </div>
 
          
@@ -101,25 +116,27 @@
         <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-analytics.js"></script>
 
         <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyCmJEsK4Mj_wyTHlMR3erc1jbZTz_k95os",
-            authDomain: "clean-the-oceans.firebaseapp.com",
-            databaseURL: "https://clean-the-oceans.firebaseio.com",
-            projectId: "clean-the-oceans",
-            storageBucket: "clean-the-oceans.appspot.com",
-            messagingSenderId: "759637651346",
-            appId: "1:759637651346:web:81a116624dd0c546501b4b",
-            measurementId: "G-BJGLXNQ0DG"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
-        const db = firebase.firestore();
+            // Firebase stuff
+            var firebaseConfig = {
+                apiKey: "AIzaSyCmJEsK4Mj_wyTHlMR3erc1jbZTz_k95os",
+                authDomain: "clean-the-oceans.firebaseapp.com",
+                databaseURL: "https://clean-the-oceans.firebaseio.com",
+                projectId: "clean-the-oceans",
+                storageBucket: "clean-the-oceans.appspot.com",
+                messagingSenderId: "759637651346",
+                appId: "1:759637651346:web:81a116624dd0c546501b4b",
+                measurementId: "G-BJGLXNQ0DG"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+            const db = firebase.firestore();
         </script>
+        <script src="slider/slider-screen.js"></script>
         <script src="js/app.js"></script>
         <script src="js/db.js"></script>
         <script src="js/ui.js"></script>
+        
     </body>
 </html>
     
