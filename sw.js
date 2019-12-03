@@ -1,5 +1,5 @@
 //cache shell of site (core assets)
-const staticCacheName = 'site-static-v2.2';
+const staticCacheName = 'site-static-v2.1';
 const assets = [
     '/',
     '/index.html',
@@ -21,7 +21,7 @@ const assets = [
     'https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
 ];
 //dynamic cache
-const dynamicCacheName = 'site-dynamic-v2.2';
+const dynamicCacheName = 'site-dynamic-v2.1';
 
 //limit cache size
 const limitCacheSize = (name, size) => {

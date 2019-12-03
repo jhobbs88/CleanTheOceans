@@ -111,3 +111,50 @@ document.addEventListener('DOMContentLoaded', function() {
   count = 0;
 }, false);
 
+const latInput = document.getElementById('lat');
+const longInput = document.getElementById('long');
+const inputLocationDetails = (lat, long) => {
+    latInput.value = lat;
+    longInput.value = long;
+}
+
+
+const dateInput = document.getElementById('date');
+var today = new Date();
+var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+dateInput.value = date;
+
+//Sliders
+var formDensity = document.getElementById('density_level');
+formDensity.value = "Clear";
+var sliderDensity = document.getElementById('density');
+sliderDensity.oninput = function() {
+  if(this.value == 0){
+    formDensity.value = "Clear";
+  }else if(this.value == 1){
+    formDensity.value = "Very Low";
+  }else if(this.value == 2){
+    formDensity.value = "Medium";
+  }else if(this.value == 3){
+    formDensity.value = "High";
+  }else{
+    formDensity.value = "Very High";
+  }
+  checkSubmission();
+}
+var formPlastics = document.getElementById('plastics_level');
+formPlastics.value = 0;
+sliderPlastics = document.getElementById('plastics');
+sliderPlastics.oninput = function() {
+  formPlastics.value = this.value*2*10;
+  checkSubmission();
+}
+
+function checkSubmission(){
+  var submit = document.getElementById('submit_text');
+  if(sliderDensity.value == 0 && formPlastics.value == 0){
+    submit.style.opacity = "0.2";
+  }else{
+    submit.style.opacity = "1";
+  }
+}
