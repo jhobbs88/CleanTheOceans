@@ -1,19 +1,19 @@
 //cache shell of site (core assets)
-const staticCacheName = 'site-static-v2.2';
+const staticCacheName = 'site-static-v2.3';
 const assets = [
     '/',
     '/index.html',
     '/pages/fallback.html',
     '/js/app.js',
     '/js/ui.js',
-    '/js/materialize.min.js',
+    '/js/libs/materialize.min.js',
+    '/js/slider-screen.js',
+    '/js/libs/jquery-1.11.js',
+    '/js/libs/jquery-ui.min.js',
+    '/js/libs/snap.svg-min.js',
     '/css/styles.css',
     '/css/materialize.min.css',
-    '/slider/slider-screen.css',
-    '/slider/slider-screen.js',
-    '/slider/jquery-1.11.js',
-    '/slider/jquery-ui.min.js',
-    '/slider/snap.svg-min.js',
+    '/css/slider-screen.css',
     '/img/cto-logo.jpg',
     '/img/ship.png',
     '/img/icons/icon-256.png',
@@ -21,7 +21,7 @@ const assets = [
     'https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
 ];
 //dynamic cache
-const dynamicCacheName = 'site-dynamic-v2.2';
+const dynamicCacheName = 'site-dynamic-v2.3';
 
 //limit cache size
 const limitCacheSize = (name, size) => {
