@@ -65,10 +65,21 @@ sliderDensity.oninput = function() {
   }else{
     formDensity.value = "Very High";
   }
+  checkSubmission();
 }
 var formPlastics = document.getElementById('plastics_level');
 formPlastics.value = 0;
 sliderPlastics = document.getElementById('plastics');
 sliderPlastics.oninput = function() {
   formPlastics.value = this.value*2*10;
+  checkSubmission();
+}
+
+function checkSubmission(){
+  var submit = document.getElementById('submit_text');
+  if(sliderDensity.value == 0 && formPlastics.value == 0){
+    submit.style.opacity = "0.2";
+  }else{
+    submit.style.opacity = "1";
+  }
 }
