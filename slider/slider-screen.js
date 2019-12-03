@@ -140,7 +140,7 @@ window.onload = function () {
 					case 1:
 				 		for(i = 0; i < densityArray.length; i++) {
 							if(i<densityArray.length*0.15*density){
-								window['triangle'+densityArray[i]].stop().animate({fill: 'rgb(240,240,240)'},500);
+								window['triangle'+densityArray[i]].stop().animate({fill: 'rgb(220,220,220)'},500);
 							} else {
 								window['triangle'+densityArray[i]].stop().animate({fill: 'white'},500);
 							}
@@ -151,7 +151,7 @@ window.onload = function () {
 					case 2:
 				 		for(i = 0; i < densityArray.length; i++) {
 							if(i<densityArray.length*0.35*density){
-								window['triangle'+densityArray[i]].stop().animate({fill: 'rgb(240,240,240)'},500);
+								window['triangle'+densityArray[i]].stop().animate({fill: 'rgb(220,220,220)'},500);
 							} else {
 								window['triangle'+densityArray[i]].stop().animate({fill: 'white'},500);
 							}
@@ -162,7 +162,7 @@ window.onload = function () {
 					case 3:
 				 		for(i = 0; i < densityArray.length; i++) {
 							if(i<densityArray.length*0.55*density){
-								window['triangle'+densityArray[i]].stop().animate({fill: 'rgb(240,240,240)'},500);
+								window['triangle'+densityArray[i]].stop().animate({fill: 'rgb(220,220,220)'},500);
 							} else {
 								window['triangle'+densityArray[i]].stop().animate({fill: 'white'},500);
 							}
@@ -173,7 +173,7 @@ window.onload = function () {
 					case 4:
 				 		for(i = 0; i < densityArray.length; i++) {
 							if(i<densityArray.length*0.7*density){
-								window['triangle'+densityArray[i]].stop().animate({fill: 'rgb(240,240,240)'},500);
+								window['triangle'+densityArray[i]].stop().animate({fill: 'rgb(220,220,220)'},500);
 							} else {
 								window['triangle'+densityArray[i]].stop().animate({fill: 'white'},500);
 							}
@@ -183,7 +183,7 @@ window.onload = function () {
 						break;
 				 	case 5:
 				 		for(i = 1; i < densityArray.length; i++) {
-							window['triangle'+densityArray[i]].stop().animate({fill: 'rgb(240,240,240)'},500);
+							window['triangle'+densityArray[i]].stop().animate({fill: 'rgb(220,220,220)'},500);
 						}
 						$('#plastics-label span').empty().append("100%");
 						break;
@@ -197,7 +197,7 @@ window.onload = function () {
 			console.log("plastics " + plastics + " - density " + density)
 			for(i = 0; i < densityArray.length; i++) {
 				if(i<densityArray.length*plastics*density){
-					window['triangle'+densityArray[i]].animate({fill: 'rgb(240,240,240)'},500);
+					window['triangle'+densityArray[i]].animate({fill: 'rgb(220,220,220)'},500);
 				} else {
 					window['triangle'+densityArray[i]].animate({fill: 'white'},500);
 				}
