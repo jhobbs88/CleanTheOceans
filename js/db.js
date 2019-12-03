@@ -41,16 +41,16 @@ form.addEventListener('submit', evt => {
     if(isLatitude(lat) && isLongitude(long)){
         const location = {
             coords: new firebase.firestore.GeoPoint(lat,long),
-            density: form.density.value,
-            plastics: form.plastics.value
+            density: form.density-level.value,
+            plastics: form.plastics-level.value
         }
         db.collection('locations').add(location)
         .catch(err => console.log(err));
     
         form.lat.value = '';
         form.long.value = '';
-        form.density.value = '';
-        form.plastics.value = '';
+        form.density_level.value = '';
+        form.plastics_level.value = '';
         getLocation();
     }else{
         if(isLongitude()==false){

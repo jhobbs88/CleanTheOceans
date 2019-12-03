@@ -50,33 +50,25 @@ var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
 dateInput.value = date;
 
 //Sliders
-var sDensity = document.getElementById('density-level');
-var oDensity = document.getElementById('density');
-var labelDensity = document.getElementById('density-label');
-oDensity.value = "Clear";
-sDensity.oninput = function() {
-  if(this.value < 10){
-    oDensity.value = "Clear";
-    labelDensity.innerHTML = "Pollution Level - Clear";
-  }else if(this.value < 35){
-    oDensity.value = "Light";
-    labelDensity.innerHTML = "Pollution Level - Light";
-  }else if(this.value < 60){
-    oDensity.value = "Medium";
-    labelDensity.innerHTML = "Pollution Level - Medium";
-  }else if(this.value < 85){
-    oDensity.value = "Heavy";
-    labelDensity.innerHTML = "Pollution Level - Heavy";
+var formDensity = document.getElementById('density_level');
+formDensity.value = "Clear";
+var sliderDensity = document.getElementById('density');
+sliderDensity.oninput = function() {
+  if(this.value == 0){
+    formDensity.value = "Clear";
+  }else if(this.value == 1){
+    formDensity.value = "Very Low";
+  }else if(this.value == 2){
+    formDensity.value = "Medium";
+  }else if(this.value == 3){
+    formDensity.value = "High";
   }else{
-    oDensity.value = "Dense";
-    labelDensity.innerHTML = "Pollution Level - Dense";
+    formDensity.value = "Very High";
   }
 }
-var sPlastics = document.getElementById('plastics-level');
-var oPlastics = document.getElementById('plastics');
-var labelPlastics = document.getElementById('plastics-label');
-oPlastics.value = 0;
-sPlastics.oninput = function() {
-  oPlastics.value = this.value;
-  labelPlastics.innerHTML = "Plastics Percentage - "+this.value+"%";
+var formPlastics = document.getElementById('plastics_level');
+formPlastics.value = 0;
+sliderPlastics = document.getElementById('plastics');
+sliderPlastics.oninput = function() {
+  formPlastics.value = this.value*2*10;
 }

@@ -48,15 +48,10 @@
         
         <!-- ship button -->
         <div id="ship-container" class="center">
-            <p style="margin-top: 15%;">Click to submit report</p>
-            <img id="ship-btn" class="sidenav-trigger" data-target="side-form"src="img/ship.png">
-           
-        </div>
-        <div class="slidecontainer">
-            <p id="density-label" class="grey-text text-darken-1">Pollution Level - Clear</p>
-            <input type="range" min="1" max="100" value="0" class="slider center" id="density-level">
-            <p id="plastics-label"class="grey-text text-darken-1">Plastics Percentage - 0%</p>
-            <input type="range" min="1" max="100" value="0" class="slider center" id="plastics-level">
+            <a>
+                <img id="ship-btn" class="sidenav-trigger" data-target="side-form"src="img/ship.png">
+                <p>Click to submit report</p>
+            </a>
         </div>
 
         <div id="slider-container">
@@ -85,12 +80,12 @@
                     <label for="coords">Longitude</label>
                 </div>
                 <div class="input-field">
-                    <input placeholder="e.g High" id="density" type="text" class="validate" readonly>
-                    <label for="density">Pollution Level</label>
+                    <input placeholder="e.g High" id="density_level" type="text" class="validate" readonly>
+                    <label for="density_level">Pollution Level</label>
                 </div>
                 <div class="input-field">
-                    <input placeholder="e.g 50%" id="plastics" type="text" class="validate" readonly>
-                    <label for="plastics">Plastics Percentage</label>
+                    <input placeholder="e.g 50%" id="plastics_level" type="text" class="validate" readonly>
+                    <label for="plastics_level">Plastics Percentage</label>
                 </div>
                 <div class="input-field center">
                     <button class="btn-small">Add</button>
