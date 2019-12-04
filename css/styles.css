@@ -5,6 +5,10 @@
   --title: #1d3152;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 /* layout styles */
 nav{
   z-index: 100;
@@ -13,6 +17,7 @@ nav{
   font-weight: bold;
   color: var(--title);
 }
+
 nav a{
   text-transform: uppercase;
   color: var(--title);
@@ -26,7 +31,7 @@ nav .sidenav-trigger{
 }
 
 #ship-container{
-  background-color: #f9f9f9;
+  background-color: rgba(249,249,249,0.9);
   border-radius: 5px;
   padding: 10px 5px;
   position: absolute;
@@ -44,7 +49,6 @@ nav .sidenav-trigger{
 #submit_text{
   font-weight: bold;
   color: grey;
-  opacity: 0.2;
 }
 #ship-btn{
   animation: swing 4s infinite ease;

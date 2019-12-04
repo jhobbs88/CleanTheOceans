@@ -145,16 +145,24 @@ sliderDensity.oninput = function() {
 var formPlastics = document.getElementById('plastics_level');
 formPlastics.value = 0;
 sliderPlastics = document.getElementById('plastics');
+sliderPlasticsLabel = document.getElementById('plastics-label');
 sliderPlastics.oninput = function() {
   formPlastics.value = this.value*2*10;
   checkSubmission();
 }
-
 function checkSubmission(){
   var submit = document.getElementById('submit_text');
-  if(sliderDensity.value == 0 && formPlastics.value == 0){
-    submit.style.opacity = "0.2";
+  if(sliderDensity.value == 0){
+    sliderPlastics.disabled = true;
+    sliderPlastics.style.opacity = 0.3;
+    sliderPlasticsLabel.style.opacity = 0.3;
+    $('#submit_text').empty().append("Set Sliders");
+    $('#ship-container').removeClass('sidenav-trigger');
   }else{
-    submit.style.opacity = "1";
+    sliderPlastics.disabled = false;
+    sliderPlastics.style.opacity =1;
+    sliderPlasticsLabel.style.opacity =1;
+    $('#submit_text').empty().append("Submit Report");
+    $('#ship-container').addClass('sidenav-trigger');
   }
 }
