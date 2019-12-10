@@ -5,6 +5,5 @@ document.addEventListener('DOMContentLoaded', function(){
     //add location
     const forms = document.querySelectorAll('.side-form');
     M.Sidenav.init(forms, {edge: 'left'})
-    checkSubmission();
 });
 
