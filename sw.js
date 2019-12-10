@@ -1,27 +1,27 @@
 //cache shell of site (core assets)
-const staticCacheName = 'site-static-v2.1';
+const staticCacheName = 'site-static-v2.1.3';
 const assets = [
-    '/',
-    '/index.html',
-    '/pages/fallback.html',
-    '/js/app.js',
-    '/js/ui.js',
-    '/js/libs/materialize.min.js',
-    '/js/slider-screen.js',
-    '/js/libs/jquery-1.11.js',
-    '/js/libs/jquery-ui.min.js',
-    '/js/libs/snap.svg-min.js',
-    '/css/styles.css',
-    '/css/materialize.min.css',
-    '/css/slider-screen.css',
-    '/img/cto-logo.jpg',
-    '/img/ship.png',
-    '/img/icons/icon-256.png',
+    '',
+    'index.html',
+    'pages/fallback.html',
+    'js/app.js',
+    'js/ui.js',
+    'js/libs/materialize.min.js',
+    'js/slider-screen.js',
+    'js/libs/jquery-1.11.js',
+    'js/libs/jquery-ui.min.js',
+    'js/libs/snap.svg-min.js',
+    'css/styles.css',
+    'css/materialize.min.css',
+    'css/slider-screen.css',
+    'img/cto-logo.jpg',
+    'img/ship.png',
+    'img/icons/icon-256.png',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
     'https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
 ];
 //dynamic cache
-const dynamicCacheName = 'site-dynamic-v2.1';
+const dynamicCacheName = 'site-dynamic-v2.1.3';
 
 //limit cache size
 const limitCacheSize = (name, size) => {
