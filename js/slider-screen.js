@@ -1,28 +1,26 @@
 window.onload = function () {
-	checkSubmission();
+
 	// DRAW TRIANGLES
 
 	canvasWidth = $(window).width();
-	canvasHeight = $(window).height() /* *0.68 */;
+	canvasHeight = $(window).height() * 0.68;
 
-
-	triangleNumberY = 19;
-	triangleNumberX = 9;
-	triangleBaseSize = (canvasWidth / triangleNumberX * 1.4);  //1.2
+	triangleNumberY = 16;
+	triangleNumberX = 8;
+	triangleBaseSize = (canvasWidth / triangleNumberX) / 1.2;
+	console.log(triangleBaseSize);
 	distY = canvasHeight / triangleNumberY;   //height of each grid section (distribution)
 	distX = canvasWidth / triangleNumberX;
 
 	s = Snap(600, 600);
 
 	triangleNum = 1;
-	topOpacity = 1;
 
 	for (i = 0; i < triangleNumberY; i++) {
 		for (j = 0; j < triangleNumberX; j++) {
 			triangleOpacity = 0;
-			randomStroke = (Math.random() * 1 + 0.4)
-			triangleBaseSizeRand = (Math.random() + 0.3) * triangleBaseSize;
-			window['triangle' + triangleNum] = s.polygon(distX * j, distY * i, distX * j + triangleBaseSizeRand, distY * i, distX * j + triangleBaseSizeRand, distY * i + triangleBaseSizeRand).attr({ fill: "white", stroke: "rgb(150,150,150)", opacity: triangleOpacity });
+			triangleBaseSizeRand = (Math.random() * 1 + 0.8) * triangleBaseSize;
+			window['triangle' + triangleNum] = s.polygon(distX * j, distY * i, distX * j + triangleBaseSizeRand, distY * i, distX * j + triangleBaseSizeRand, distY * i + triangleBaseSizeRand).attr({ fill: "white", stroke: "rgb(50,50,50)", opacity: triangleOpacity });
 
 			//rotate triangles a random degree
 			centrePointX = distX * j + (triangleBaseSizeRand / 2);
@@ -68,26 +66,26 @@ window.onload = function () {
 					for (i = 0; i < densityArray.length; i++) {
 						window['triangle' + densityArray[i]].stop().animate({ opacity: 0 }, fadeTime);
 					}
+					density = 0;
 					$('#density-label span').empty().append("Clear");
 					$('#density_level').val("Clear");
-					density = 0;
 					break;
 				case 1:
 					for (i = 0; i < densityArray.length; i++) {
 						if (i < densityArray.length * 0.1) {
-							window['triangle' + densityArray[i]].stop().animate({ opacity: topOpacity }, fadeTime);
+							window['triangle' + densityArray[i]].stop().animate({ opacity: 1 }, fadeTime);
 						} else {
 							window['triangle' + densityArray[i]].stop().animate({ opacity: 0 }, fadeTime);
 						}
 					}
+					density = 0.1;
 					$('#density-label span').empty().append("Very Low");
 					$('#density_level').val("Very Low");
-					density = 0.1;
 					break;
 				case 2:
 					for (i = 0; i < densityArray.length; i++) {
 						if (i < densityArray.length * 0.2) {
-							window['triangle' + densityArray[i]].stop().animate({ opacity: topOpacity }, fadeTime);
+							window['triangle' + densityArray[i]].stop().animate({ opacity: 1 }, fadeTime);
 						} else {
 							window['triangle' + densityArray[i]].stop().animate({ opacity: 0 }, fadeTime);
 						}
@@ -99,7 +97,7 @@ window.onload = function () {
 				case 3:
 					for (i = 0; i < densityArray.length; i++) {
 						if (i < densityArray.length * 0.3) {
-							window['triangle' + densityArray[i]].stop().animate({ opacity: topOpacity }, fadeTime);
+							window['triangle' + densityArray[i]].stop().animate({ opacity: 1 }, fadeTime);
 						} else {
 							window['triangle' + densityArray[i]].stop().animate({ opacity: 0 }, fadeTime);
 						}
@@ -111,7 +109,7 @@ window.onload = function () {
 				case 4:
 					for (i = 0; i < densityArray.length; i++) {
 						if (i < densityArray.length * 0.5) {
-							window['triangle' + densityArray[i]].stop().animate({ opacity: topOpacity }, fadeTime);
+							window['triangle' + densityArray[i]].stop().animate({ opacity: 1 }, fadeTime);
 						} else {
 							window['triangle' + densityArray[i]].stop().animate({ opacity: 0 }, fadeTime);
 						}
@@ -122,15 +120,15 @@ window.onload = function () {
 					break;
 				case 5:
 					for (i = 0; i < densityArray.length; i++) {
-						if (i < densityArray.length * 0.8) {
-							window['triangle' + densityArray[i]].stop().animate({ opacity: topOpacity }, fadeTime);
+						if (i < densityArray.length * 0.7) {
+							window['triangle' + densityArray[i]].stop().animate({ opacity: 1 }, fadeTime);
 						} else {
 							window['triangle' + densityArray[i]].stop().animate({ opacity: 0 }, fadeTime);
 						}
 					}
 					$('#density-label span').empty().append("Very High");
 					$('#density_level').val("Very High");
-					density = 0.8;
+					density = 0.7;
 					break;
 			}
 			plasticsUpdate(density);
@@ -143,6 +141,7 @@ window.onload = function () {
 					}
 					$('#plastics-label span').empty().append("0%");
 					$('#plastics_level').val("0");
+					plastics = 0;
 					break;
 				case 1:
 					for (i = 0; i < densityArray.length; i++) {
@@ -158,7 +157,7 @@ window.onload = function () {
 					break;
 				case 2:
 					for (i = 0; i < densityArray.length; i++) {
-						if (i < densityArray.length * 0.35 * density) {
+						if (i < densityArray.length * 0.3 * density) {
 							window['triangle' + densityArray[i]].stop().animate({ fill: 'rgb(220,220,220)' }, 500);
 						} else {
 							window['triangle' + densityArray[i]].stop().animate({ fill: 'white' }, 500);
@@ -166,11 +165,11 @@ window.onload = function () {
 					}
 					$('#plastics-label span').empty().append("40%");
 					$('#plastics_level').val("40");
-					plastics = 0.35;
+					plastics = 0.3;
 					break;
 				case 3:
 					for (i = 0; i < densityArray.length; i++) {
-						if (i < densityArray.length * 0.55 * density) {
+						if (i < densityArray.length * 0.5 * density) {
 							window['triangle' + densityArray[i]].stop().animate({ fill: 'rgb(220,220,220)' }, 500);
 						} else {
 							window['triangle' + densityArray[i]].stop().animate({ fill: 'white' }, 500);
@@ -198,8 +197,11 @@ window.onload = function () {
 					}
 					$('#plastics-label span').empty().append("100%");
 					$('#plastics_level').val("100");
+					plastics = 1;
 					break;
 			}
+			
+			densityUpdate(plastics);
 		}
 		checkSubmission();
 	});
@@ -207,7 +209,6 @@ window.onload = function () {
 	// UPDATE OPACITY OF TRIANGLES (PLASTICS) ON DENSITY UPDATE
 
 	function plasticsUpdate(density) {
-		console.log("plastics " + plastics + " - density " + density)
 		for (i = 0; i < densityArray.length; i++) {
 			if (i < densityArray.length * plastics * density) {
 				window['triangle' + densityArray[i]].animate({ fill: 'rgb(220,220,220)' }, 500);
@@ -217,6 +218,15 @@ window.onload = function () {
 		}
 	}
 
+	function densityUpdate(plastics) {
+		for (i = 0; i < densityArray.length; i++) {
+			if (i < densityArray.length * plastics * density) {
+				window['triangle' + densityArray[i]].animate({ fill: 'rgb(220,220,220)' }, 500);
+			} else {
+				window['triangle' + densityArray[i]].animate({ fill: 'white' }, 500);
+			}
+		}
+	}
 	function checkSubmission() {
 		densitySlider = document.getElementById("density");
 		plasticsSlider = document.getElementById("plastics");
@@ -234,4 +244,5 @@ window.onload = function () {
 			$('#ship-container').addClass('sidenav-trigger');
 		}
 	}
+
 }
