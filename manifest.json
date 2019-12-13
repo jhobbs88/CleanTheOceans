@@ -1,11 +1,11 @@
 {
     "name": "Clean The Oceans",
-    "short_name": "CTO",
+    "short_name": "Clean The Oceans",
     "start_url": "index.html",
     "display": "standalone",
     "background_color": "#027d71",
     "theme_color": "#07a899",
-    "orientation": "portrait-primary",
+    "orientation": "portrait",
     "icons": [
         {
             "src": "img/icons/icon-72.png",
