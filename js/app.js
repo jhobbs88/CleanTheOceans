@@ -14,12 +14,14 @@ const isIos = () => {
 const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
 
 // Checks if should display install popup notification:
-if (isIos() && !isInStandaloneMode()) {
+
+if (isIos() && !isInStandaloneMode() && Cookies.get('dismissed') != 'yes') {
   let a2hsBtnIos = document.querySelector(".ad2hs-prompt-ios");
   a2hsBtnIos.style.display = "block";
   a2hsBtnIos.addEventListener("click", dismissIosHomeScreen);
 }
 function dismissIosHomeScreen() {
+  Cookies.set('dismissed', 'yes', { expires: 7 })
   let a2hsBtnIos = document.querySelector(".ad2hs-prompt-ios");
   a2hsBtnIos.style.display = "none";
 }

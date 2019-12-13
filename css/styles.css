@@ -6,11 +6,27 @@
 }
 
 body {
-  overflow-x: hidden;
+  top: 0;
+  position: fixed;
+  overflow: hidden;
+  height: 100vh;
+  width: 100%;
+  margin: 0px;
+	padding: 0px;
+  font-family: Helvetica, sans-serif;	
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: contain;
 }
+
+.content{
+  margin-top: 100px;
+}
+
+
 
 /* layout styles */
 nav{
+  position: fixed;
   z-index: 100;
   background: var(--primary);
   border-bottom: 10px solid var(--secondary);
@@ -22,6 +38,13 @@ nav a{
   text-transform: uppercase;
   color: var(--title);
 }
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+} 
+
 nav .sidenav-trigger{
   margin: 0;
 }
@@ -31,10 +54,10 @@ nav .sidenav-trigger{
 }
 
 #ship-container{
+  position: fixed;
   background-color: rgba(249,249,249,0.9);
   border-radius: 5px;
   padding: 10px 5px;
-  position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -61,39 +84,6 @@ nav .sidenav-trigger{
   50%{ transform: rotate(5deg);}
   100%{ transform: rotate(-2deg);}
 }
-/* location form styles */
-.location{
-  margin-top: 20%;
-}
-.card-panel.location{
-  border-radius: 8px;
-  padding: 10px;
-  box-shadow: 0px 1px 3px rgba(90,90,90,0.1);
-  display: grid;
-  grid-template-columns: 2fr 6fr 1fr;
-  grid-template-areas: "image details delete";
-  position: relative;
-}
-.location img{
-  grid-area: image;
-  max-width: 120px;
-}
-.location-details{
-  grid-area: details;
-  margin-top: 6px;
-}
-.location-delete{
-  grid-area: delete;
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-}
-.location-delete i{
-  font-size: 18px;
-}
-.location-title{
-  font-weight: bold;
-}
 
 /* form-styles */
 .add-btn{
@@ -113,19 +103,19 @@ form .input-field{
 
 /* prompt */
 .ad2hs-prompt, .ad2hs-prompt-ios  {
-  background-color: rgb(59, 134, 196); /* Blue */
+  position: fixed;
+  background-color: #1d3152; /* Blue */
   border: none;
   display: none;
   color: white;
-  padding: 10px;
+  padding: 15px;
   text-align: center;
   text-decoration: none;
   font-size:13px;
-  position: absolute;
   margin: 0 1rem 1rem;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 25px;
   width: calc(100% - 32px);
   z-index: 999;
   line-height: 150%;

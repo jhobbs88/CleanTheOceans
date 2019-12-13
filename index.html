@@ -8,8 +8,8 @@
     <!--stylesheets-->
     <link type="text/css" href="css/materialize.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" href="css/styles.css" rel="stylesheet">
-    <link type="text/css" href="css/slider-screen.css" rel="stylesheet">
+    <link type="text/css" href="css/styles.css?v1.1" rel="stylesheet">
+    <link type="text/css" href="css/slider-screen.css?v1" rel="stylesheet">
     <!--js libaries-->
     <script type="text/javascript" src="js/libs/materialize.min.js"></script>
     <script type="text/javascript" src="js/libs/snap.svg-min.js"></script>
@@ -52,7 +52,7 @@
 
     <!-- ship button -->
     <div id="ship-container" class="center sidenav-trigger" data-target="side-form">
-        <img id="ship-btn" src="img/ship.png">
+        <img id="ship-btn" src="img/ship.png?v2">
         <p id="submit_text">Submit Report</p>
     </div>
 
@@ -69,7 +69,7 @@
     <!-- add data -->
     <div id="side-form" class="container grey-text text-darken-1 sidenav side-form">
         <form class="location container section">
-            <h6>New Pollution Report</h6>
+            <h6 class="grey-text text-darken-1">New Pollution Report</h6>
             <div class="divider"></div>
             <div class="input-field">
                 <input placeholder="19/09/2019" id="date" type="text" class="validate" readonly>
@@ -130,8 +130,10 @@
         firebase.analytics();
         const db = firebase.firestore();
     </script>
-    <script src="js/slider-screen.js"></script>
-    <script src="js/app.js?v=2.1"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+    <script src="js/slider-screen.js?v=1.2"></script>
+    <script src="js/app.js?v=2.5"></script>
     <script src="js/db.js"></script>
     <script src="js/ui.js"></script>
 </body>

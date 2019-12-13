@@ -1,5 +1,5 @@
 //cache shell of site (core assets)
-const staticCacheName = 'site-static-v2.4';
+const staticCacheName = 'site-static-v1.0';
 const assets = [
     '',
     'index.html',
@@ -19,9 +19,10 @@ const assets = [
     'img/icons/icon-256.png',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
     'https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
+    'https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js',
 ];
 //dynamic cache
-const dynamicCacheName = 'site-dynamic-v2.4';
+const dynamicCacheName = 'site-dynamic-v1.0';
 
 //limit cache size
 const limitCacheSize = (name, size) => {
@@ -72,7 +73,7 @@ self.addEventListener('fetch', evt => {
           });
         }).catch(() => {
           if(evt.request.url.indexOf('.html') > -1){//if can't find page return fallback
-            return caches.match('/pages/fallback.html');
+            return caches.match('pages/fallback.html');
           }
         })
       );

@@ -2,14 +2,6 @@
 			outline: none;	
 		}
 		
-		body {
-			margin: 0px;
-			padding: 0px;
-			font-family: Helvetica, sans-serif;
-			height: 100vh;
-			overflow-y: hidden;
-		}
-		
 		svg {
 			position: fixed;
 			background: #fcfcfc;
@@ -64,22 +56,24 @@
 		}
 
 
-		.slider::-webkit-slider-thumb {
+		input[type=range]::-webkit-slider-thumb {
 			-webkit-appearance: none;
+			margin-top: -10px;
 			appearance: none;
 			width: 25px;
 			height: 25px;
 			border-radius: 25px;
 			border-color: transparent;
-			background: #4CAF50;
+			background: #01ad98;
 			cursor: pointer;
 		}
 
 		.slider::-moz-range-thumb {
+			margin-top: -10px;
 			width: 25px;
 			height: 25px;
 			border-radius: 25px;
 			border-color: transparent;
-			background: #4CAF50;
+			background: #01ad98;
 			cursor: pointer;
 		}

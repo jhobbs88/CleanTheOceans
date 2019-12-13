@@ -1,9 +1,9 @@
 window.onload = function () {
-
+	
 	// DRAW TRIANGLES
 
 	canvasWidth = $(window).width();
-	canvasHeight = $(window).height() * 0.68;
+	canvasHeight = $(window).height();
 
 	triangleNumberY = 16;
 	triangleNumberX = 8;
@@ -39,7 +39,7 @@ window.onload = function () {
 	fadeTime = 400;
 	density = 0;
 	plastics = 0;
-
+	checkSubmission();
 	// CREATE AND SHUFFLE DENSITY ARRAY
 
 	densityArray = [];
@@ -73,7 +73,7 @@ window.onload = function () {
 				case 1:
 					for (i = 0; i < densityArray.length; i++) {
 						if (i < densityArray.length * 0.1) {
-							window['triangle' + densityArray[i]].stop().animate({ opacity: 1 }, fadeTime);
+							window['triangle' + densityArray[i]].stop().animate({ opacity: 0.5 }, fadeTime);
 						} else {
 							window['triangle' + densityArray[i]].stop().animate({ opacity: 0 }, fadeTime);
 						}
@@ -85,7 +85,7 @@ window.onload = function () {
 				case 2:
 					for (i = 0; i < densityArray.length; i++) {
 						if (i < densityArray.length * 0.2) {
-							window['triangle' + densityArray[i]].stop().animate({ opacity: 1 }, fadeTime);
+							window['triangle' + densityArray[i]].stop().animate({ opacity: 0.5 }, fadeTime);
 						} else {
 							window['triangle' + densityArray[i]].stop().animate({ opacity: 0 }, fadeTime);
 						}
@@ -97,7 +97,7 @@ window.onload = function () {
 				case 3:
 					for (i = 0; i < densityArray.length; i++) {
 						if (i < densityArray.length * 0.3) {
-							window['triangle' + densityArray[i]].stop().animate({ opacity: 1 }, fadeTime);
+							window['triangle' + densityArray[i]].stop().animate({ opacity: 0.5 }, fadeTime);
 						} else {
 							window['triangle' + densityArray[i]].stop().animate({ opacity: 0 }, fadeTime);
 						}
@@ -109,7 +109,7 @@ window.onload = function () {
 				case 4:
 					for (i = 0; i < densityArray.length; i++) {
 						if (i < densityArray.length * 0.5) {
-							window['triangle' + densityArray[i]].stop().animate({ opacity: 1 }, fadeTime);
+							window['triangle' + densityArray[i]].stop().animate({ opacity: 0.5 }, fadeTime);
 						} else {
 							window['triangle' + densityArray[i]].stop().animate({ opacity: 0 }, fadeTime);
 						}
@@ -121,7 +121,7 @@ window.onload = function () {
 				case 5:
 					for (i = 0; i < densityArray.length; i++) {
 						if (i < densityArray.length * 0.7) {
-							window['triangle' + densityArray[i]].stop().animate({ opacity: 1 }, fadeTime);
+							window['triangle' + densityArray[i]].stop().animate({ opacity: 0.5 }, fadeTime);
 						} else {
 							window['triangle' + densityArray[i]].stop().animate({ opacity: 0 }, fadeTime);
 						}
@@ -200,7 +200,7 @@ window.onload = function () {
 					plastics = 1;
 					break;
 			}
-			
+
 			densityUpdate(plastics);
 		}
 		checkSubmission();
@@ -209,11 +209,12 @@ window.onload = function () {
 	// UPDATE OPACITY OF TRIANGLES (PLASTICS) ON DENSITY UPDATE
 
 	function plasticsUpdate(density) {
+		console.log("update plastics")
 		for (i = 0; i < densityArray.length; i++) {
 			if (i < densityArray.length * plastics * density) {
-				window['triangle' + densityArray[i]].animate({ fill: 'rgb(220,220,220)' }, 500);
+				window['triangle' + densityArray[i]].animate({ fill: 'rgb(220,220,220)'}, 500);
 			} else {
-				window['triangle' + densityArray[i]].animate({ fill: 'white' }, 500);
+				window['triangle' + densityArray[i]].animate({ fill: 'rgb(255,255,255)' }, 500);
 			}
 		}
 	}
@@ -223,14 +224,13 @@ window.onload = function () {
 			if (i < densityArray.length * plastics * density) {
 				window['triangle' + densityArray[i]].animate({ fill: 'rgb(220,220,220)' }, 500);
 			} else {
-				window['triangle' + densityArray[i]].animate({ fill: 'white' }, 500);
+				window['triangle' + densityArray[i]].animate({ fill: 'rgb(255,255,255)' }, 500);
 			}
 		}
 	}
 	function checkSubmission() {
-		densitySlider = document.getElementById("density");
 		plasticsSlider = document.getElementById("plastics");
-		if (density.value == 0) {
+		if (density == 0) {
 			plasticsSlider.disabled = true;
 			plasticsSlider.style.opacity = 0.3;
 			plasticsSlider.style.opacity = 0.3;
