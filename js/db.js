@@ -13,6 +13,7 @@ db.enablePersistence()
 count = 0;
 //realtime listener gets changes to db in realtime
 const debugMsg = document.querySelector('.messages');
+/*
 db.collection('locations').onSnapshot((snapshot) => {
     count++;
     snapshot.docChanges().forEach(change => {
@@ -23,6 +24,9 @@ db.collection('locations').onSnapshot((snapshot) => {
             if (change.type === 'added') {
                 //add to page
                 debugMsg.innerHTML = "Report successfully deployed";
+                setTimeout(function(){ 
+                    debugMsg.innerHTML = "";
+                }, 3000);
             }
             if (change.type === 'removed') {
                 //remove from page
@@ -32,25 +36,28 @@ db.collection('locations').onSnapshot((snapshot) => {
 
     });
 })
+*/
 //add location report to data base
 const form = document.querySelector('.location');
 form.addEventListener('submit', evt => {
     evt.preventDefault();
     lat = parseFloat(form.lat.value);
     long = parseFloat(form.long.value);
-    if (isLatitude(lat) && isLongitude(long)) {
+    
+    if (isLatitude(lat) && isLongitude(long) && form.density_level.value != 'Clear') {
         const location = {
+            date: form.date.value,
             coords: new firebase.firestore.GeoPoint(lat, long),
-            density: form.density - level.value,
-            plastics: form.plastics - level.value
+            density: form.density_level.value,
+            plastics: form.plastics_level.value
         }
         db.collection('locations').add(location)
             .catch(err => console.log(err));
 
         form.lat.value = '';
         form.long.value = '';
-        form.density_level.value = '';
-        form.plastics_level.value = '';
+        form.density_level.value = 'Clear';
+        form.plastics_level.value = '0';
         getLocation();
     } else {
         if (isLongitude() == false) {
@@ -58,6 +65,12 @@ form.addEventListener('submit', evt => {
         }
         if (isLatitude() == false) {
             form.lat.value = 'Invaild input - try again';
+        }
+        if(form.density_level.value == 'Clear' || form.density_level.value == 'Invalid Input - Set Sliders' ){
+            form.density_level.value = 'Invalid Input - Set Sliders'
+        }
+        if(form.plastics_level.value == '' || form.plastics_level.value == 'Invalid Input - Set Sliders'){
+            form.plastics_level.value = 'Invalid Input - Set Sliders'
         }
         getLocation();
     }

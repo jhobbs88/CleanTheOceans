@@ -232,17 +232,28 @@ window.onload = function () {
 		plasticsSlider = document.getElementById("plastics");
 		if (density == 0) {
 			plasticsSlider.disabled = true;
+			plasticsSlider.value = 0;
 			plasticsSlider.style.opacity = 0.3;
 			plasticsSlider.style.opacity = 0.3;
+			$('#plastics-label span').empty().append("0%");
 			$('#submit_text').empty().append("Set Sliders");
 			$('#ship-container').removeClass('sidenav-trigger');
+			$('#ship-container').css("opacity",0.5);
 		} else {
 			plasticsSlider.disabled = false;
 			plasticsSlider.style.opacity = 1;
 			plasticsSlider.style.opacity = 1;
 			$('#submit_text').empty().append("Submit Report");
 			$('#ship-container').addClass('sidenav-trigger');
+			$('#ship-container').css("opacity",1);
 		}
 	}
+	$('#density_level').val("Clear");
+	$('#plastics_level').val("0");
+	$("#ship-container").on('mouseover', function () {
+		if(density!=0) $(this).css('box-shadow', '0 14px 28px rgba(0,0,0,0.15), 0 5px 5px rgba(0,0,0,0.22)');
+	 }).on('mouseout', function () {
+		$(this).css('box-shadow', 'none');
+	});
 
 }

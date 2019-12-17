@@ -10,8 +10,8 @@
     <!--stylesheets-->
     <link type="text/css" href="css/materialize.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" href="css/styles.css?v1.1" rel="stylesheet">
-    <link type="text/css" href="css/slider-screen.css?v1" rel="stylesheet">
+    <link type="text/css" href="css/styles.css?v1.6" rel="stylesheet">
+    <link type="text/css" href="css/slider-screen.css?v1.4" rel="stylesheet">
     <!--js libaries-->
     <script type="text/javascript" src="js/libs/materialize.min.js"></script>
     <script type="text/javascript" src="js/libs/snap.svg-min.js"></script>
@@ -20,26 +20,55 @@
     <!--service worker manifest-->
     <link rel="manifest" href="manifest.json">
     <!--mobile gubbins-->
-    <link rel="apple-touch-icon" href="img/icons/icon-96.png">
+    <link rel="apple-touch-icon" href="img/icons/icon-256.png">
     <meta name="apple-mobile-web-app-status-bar" content="#1d3152">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Clean The Oceans">
     <meta name="theme-color" content="#1d3152">
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link href="img/splash/apple_splash_2048.png" sizes="2048x2732" rel="apple-touch-startup-image" />
-    <link href="img/splash/apple_splash_1668.png" sizes="1668x2224" rel="apple-touch-startup-image" />
-    <link href="img/splash/apple_splash_1536.png" sizes="1536x2048" rel="apple-touch-startup-image" />
-    <link href="img/splash/apple_splash_1125.png" sizes="1125x2436" rel="apple-touch-startup-image" />
-    <link href="img/splash/apple_splash_1242.png" sizes="1242x2208" rel="apple-touch-startup-image" />
-    <link href="img/splash/apple_splash_750.png" sizes="750x1334" rel="apple-touch-startup-image" />
-    <link href="img/splash/apple_splash_640.png" sizes="640x1136" rel="apple-touch-startup-image" />
+    <link
+      rel="apple-touch-startup-image"
+      media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+      href="img/splash/apple_splash_1125.png"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      media="screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"
+      href="img/splash/apple_splash_1242.png"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      media="screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+      href="img/splash/apple_splash_750.png"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      media="screen and (device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+      href="img/splash/apple_splash_2048.png"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      media="screen and (device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+      href="img/splash/apple_splash_1668.png"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      media="screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+      href="img/splash/apple_splash_640.png"
+    />
+    <link
+      rel="apple-touch-startup-image"
+      media="screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"
+      href="img/splash/apple_splash_1536.png"
+    />
+  </head>
 </head>
 
 <body>
     <!-- top nav -->
     <nav>
         <div class="nav-wrapper container">
-            <a href="/">Clean The Oceans</a>
+            <a href="">Clean The Oceans</a>
             <span class="right">
                 <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
             </span>
@@ -62,7 +91,7 @@
 
     <!-- ship button -->
     <div id="ship-container" class="center sidenav-trigger" data-target="side-form">
-        <img id="ship-btn" src="img/ship.png?v2">
+        <img id="ship-btn" src="img/ship.png?v3">
         <p id="submit_text">Submit Report</p>
     </div>
 
@@ -143,9 +172,9 @@
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
-    <script src="js/slider-screen.js?v=1.2"></script>
-    <script src="js/app.js?v=2.5"></script>
-    <script src="js/db.js"></script>
+    <script src="js/slider-screen.js?v=1.1"></script>
+    <script src="js/app.js?v=1.1"></script>
+    <script src="js/db.js?v1.1"></script>
     <script src="js/ui.js"></script>
 </body>
 
