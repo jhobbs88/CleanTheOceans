@@ -14,7 +14,6 @@ const isIos = () => {
 const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
 
 // Checks if should display install popup notification:
-
 if (isIos() && !isInStandaloneMode() && Cookies.get('dismissed') != 'yes') {
   let a2hsBtnIos = document.querySelector(".ad2hs-prompt-ios");
   a2hsBtnIos.style.display = "block";

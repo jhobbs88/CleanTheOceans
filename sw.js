@@ -1,11 +1,10 @@
 //cache shell of site (core assets)
-const staticCacheName = 'site-static-v1.1';
+const staticCacheName = 'site-static-v1.4';
 const assets = [
     '',
     'index.html',
     'pages/fallback.html',
     'js/app.js',
-    'js/ui.js',
     'js/libs/materialize.min.js',
     'js/slider-screen.js',
     'js/libs/jquery-1.11.js',
@@ -22,7 +21,7 @@ const assets = [
     'https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js',
 ];
 //dynamic cache
-const dynamicCacheName = 'site-dynamic-v1.1';
+const dynamicCacheName = 'site-dynamic-v1.4';
 
 //limit cache size
 const limitCacheSize = (name, size) => {

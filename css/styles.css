@@ -52,7 +52,18 @@ nav .sidenav-trigger{
 #side-menu .subheader{
   color: var(--title);
 }
-
+#submit-msg{
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+  font-size: 10px;
+}
+#wait-msg{
+  font-size: 12px;
+  background-color: white;
+}
 #ship-container{
   width: 40vw;
   max-width: 200px;
@@ -67,6 +78,7 @@ nav .sidenav-trigger{
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   cursor: pointer;
+  border: 3px solid #dddddd;
 }
 @media (hover: hover) { 
   #ship-container:hover {

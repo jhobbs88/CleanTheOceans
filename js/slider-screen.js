@@ -1,7 +1,186 @@
 window.onload = function () {
+	//variables
+	var startTime;
+	var endTime;
+
+	//init side menus
+    const menus = document.querySelectorAll('.side-menu');
+    M.Sidenav.init(menus, {edge: 'right'});
+    const forms = document.querySelectorAll('.side-form');
+	M.Sidenav.init(forms, {edge: 'left'})
+
+	
+	
+	//offline data
+	db.enablePersistence()
+        .catch(function (err) {
+            if (err.code == 'failed-precondition') {
+                // probably multible tabs open at once
+                console.log('persistance failed');
+            } else if (err.code == 'unimplemented') {
+                // lack of browser support for the feature
+                console.log('persistance not available');
+            }
+		});
+		
+	//get location
+	getLocation();
+	
+	
+	//init labels
+	$('#density_level').val("Clear");
+	$('#plastics_level').val("0");
+
+	//ship container interaction
+	$("#ship-container").on('mouseover', function () {//hover for desktop
+		if(density!=0) $(this).css('box-shadow', '0 14px 28px rgba(0,0,0,0.15), 0 5px 5px rgba(0,0,0,0.22)');
+	 }).on('mouseout', function () {
+		$(this).css('box-shadow', 'none');
+	}).on('click', function () {//set wait message based on cookie
+		if(Cookies.get('submit') != 'yes'){
+			document.getElementById('submit').style.opacity = 1;
+		}else{
+			endTime = new Date();
+			document.getElementById('submit').style.opacity = 0.6;
+			var difference = endTime.getTime() - startTime.getTime(); // This will give difference in milliseconds
+			var resultInMinutes = 30-(Math.round(difference / 60000));
+			document.getElementById('wait-msg').innerHTML = "Please wait " + resultInMinutes + " minutes until next submission";
+		}
+	});
+	
+    //add location report to data base
+	const form = document.querySelector('.location');
+    form.addEventListener('submit', evt => {
+        evt.preventDefault();
+        lat = parseFloat(form.lat.value);
+		long = parseFloat(form.long.value);
+        if(Cookies.get('submit') != 'yes'){//if form not submitted in last 30 mins
+			if (isLatitude(lat) && isLongitude(long) && form.density_level.value != 'Clear') {//basic form validation
+				const location = {//create location object
+					date: form.date.value,
+					coords: new firebase.firestore.GeoPoint(lat, long),
+					density: form.density_level.value,
+					plastics: form.plastics_level.value
+				}
+				db.collection('locations').add(location)//submit location to database
+					.catch(err => console.log(err));
+
+				//reset form fields
+				form.lat.value = '';
+				form.long.value = '';
+				form.density_level.value = 'Clear';
+				form.plastics_level.value = '0';
+				//reset sliders
+				resetSliders();
+				//success message on interface
+				document.getElementById('submit-msg').innerHTML = "Report successfully deployed";
+				setTimeout(function(){ 
+					document.getElementById('submit-msg').innerHTML= " ";
+				}, 3000);
+				//set new cookie
+				var in30Minutes = 1/48;
+				Cookies.set('submit', 'yes', {
+					expires: in30Minutes
+				});
+				//set start time for wait message
+				startTime = new Date();
+				//get new location data
+				getLocation();
+				
+			} else {
+				//set validation messages
+				if (isLongitude() == false) {
+					form.long.value = 'Invaild input - try again';
+				}
+				if (isLatitude() == false) {
+					form.lat.value = 'Invaild input - try again';
+				}
+				if(form.density_level.value == 'Clear' || form.density_level.value == 'Invalid Input - Set Sliders' ){
+					form.density_level.value = 'Invalid Input - Set Sliders'
+				}
+				if(form.plastics_level.value == '' || form.plastics_level.value == 'Invalid Input - Set Sliders'){
+					form.plastics_level.value = 'Invalid Input - Set Sliders'
+				}
+				getLocation();
+			}
+		}
+    });
+
+    //reset sliders
+    function resetSliders(){
+        $('#plastics').val("0");
+        $('#density').val("0");
+        $('#plastics-label span').empty().append("0%");
+        $('#density-label span').empty().append("Clear");
+        $('#submit_text').empty().append("Set Sliders");
+        $('#ship-container').removeClass('sidenav-trigger');
+        $('#ship-container').css("opacity",0.5);
+        clearTriangles();   
+    }
+
+    //Geolocation functionality
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(geoSuccess, geoError);
+        } else {
+            console.log("Geolocation not supported");
+        }
+    }
+	//set geoloaction form fields
+	const latInput = document.getElementById('lat');
+    const longInput = document.getElementById('long');
+    function geoSuccess(position) {
+        var lat = position.coords.latitude;
+        var long = position.coords.longitude;
+        lat = lat.toFixed(5);
+        long = long.toFixed(5);
+
+        if (isLatitude(lat) && isLongitude(long)) {
+            inputLocationDetails(lat, long);
+        }
+        else {
+            inputLocationDetails(0, 0);
+        }
+    }
+    function isLatitude(lat) {
+        return isFinite(lat) && Math.abs(lat) <= 90;
+    }
+
+    function isLongitude(lng) {
+        return isFinite(lng) && Math.abs(lng) <= 180;
+	}
+	
+    const inputLocationDetails = (lat, long) => {
+        latInput.value = lat;
+        longInput.value = long;
+    }
+	//Error logs if location can't be obtained
+    function geoError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                console.log("User denied permission");
+                break;
+            case error.POSITION_UNAVAILABLE:
+                console.log("postion currently unvailable");
+                break;
+            case error.TIMEOUT:
+                console.log("postion currently unvailable");
+                break;
+            case error.UNKOWN_ERROR:
+                console.log("An unknown error occured");
+                break;
+        }
+    }
+
+    
+
+	//get date
+    const dateInput = document.getElementById('date');
+    today = new Date();
+    date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+    dateInput.value = date;
 	
 	// DRAW TRIANGLES
-
 	canvasWidth = $(window).width();
 	canvasHeight = $(window).height();
 
@@ -34,14 +213,12 @@ window.onload = function () {
 	}
 
 	// VARIABLES FOR SLIDER EVENTS
-
 	totalTriangles = triangleNum;
 	fadeTime = 400;
 	density = 0;
 	plastics = 0;
-	checkSubmission();
-	// CREATE AND SHUFFLE DENSITY ARRAY
 
+	// CREATE AND SHUFFLE DENSITY ARRAY
 	densityArray = [];
 
 	for (i = 1; i < totalTriangles; i++) {
@@ -58,7 +235,6 @@ window.onload = function () {
 	}
 
 	// EVENT HANDLER - SLIDER
-
 	$(document).on('input', 'input[type="range"]', function (e) {
 		if (this.id == "density") {
 			switch (parseInt(this.value)) {
@@ -205,11 +381,8 @@ window.onload = function () {
 		}
 		checkSubmission();
 	});
-
 	// UPDATE OPACITY OF TRIANGLES (PLASTICS) ON DENSITY UPDATE
-
 	function plasticsUpdate(density) {
-		console.log("update plastics")
 		for (i = 0; i < densityArray.length; i++) {
 			if (i < densityArray.length * plastics * density) {
 				window['triangle' + densityArray[i]].animate({ fill: 'rgb(220,220,220)'}, 500);
@@ -218,7 +391,6 @@ window.onload = function () {
 			}
 		}
 	}
-
 	function densityUpdate(plastics) {
 		for (i = 0; i < densityArray.length; i++) {
 			if (i < densityArray.length * plastics * density) {
@@ -228,12 +400,23 @@ window.onload = function () {
 			}
 		}
 	}
+	//clear triangles after form submission
+	function clearTriangles(){
+		for (i = 0; i < densityArray.length; i++) {
+			window['triangle' + densityArray[i]].animate({ opacity: 0 }, fadeTime);
+			window['triangle' + densityArray[i]].animate({ fill: 'white' }, 500);
+		}
+		plastics = 0;
+		density = 0;
+		plasticsUpdate(density);
+		densityUpdate(plastics);
+	}
+	//checks whether sliders have been set, prevents form opening if not
+	plasticsSlider = document.getElementById("plastics");
 	function checkSubmission() {
-		plasticsSlider = document.getElementById("plastics");
 		if (density == 0) {
 			plasticsSlider.disabled = true;
 			plasticsSlider.value = 0;
-			plasticsSlider.style.opacity = 0.3;
 			plasticsSlider.style.opacity = 0.3;
 			$('#plastics-label span').empty().append("0%");
 			$('#submit_text').empty().append("Set Sliders");
@@ -242,18 +425,18 @@ window.onload = function () {
 		} else {
 			plasticsSlider.disabled = false;
 			plasticsSlider.style.opacity = 1;
-			plasticsSlider.style.opacity = 1;
 			$('#submit_text').empty().append("Submit Report");
 			$('#ship-container').addClass('sidenav-trigger');
 			$('#ship-container').css("opacity",1);
 		}
 	}
-	$('#density_level').val("Clear");
-	$('#plastics_level').val("0");
-	$("#ship-container").on('mouseover', function () {
-		if(density!=0) $(this).css('box-shadow', '0 14px 28px rgba(0,0,0,0.15), 0 5px 5px rgba(0,0,0,0.22)');
-	 }).on('mouseout', function () {
-		$(this).css('box-shadow', 'none');
-	});
-
+	
 }
+plasticsSlider = document.getElementById("plastics");
+plasticsSlider.disabled = true;
+plasticsSlider.value = 0;
+plasticsSlider.style.opacity = 0.3;
+$('#plastics-label span').empty().append("0%");
+$('#submit_text').empty().append("Set Sliders");
+$('#ship-container').removeClass('sidenav-trigger');
+$('#ship-container').css("opacity",0.5);
